@@ -1,0 +1,38 @@
+﻿<Window x:Class="DB_App.Usun"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DB_App"
+        mc:Ignorable="d"
+        Title="Usun" Height="598.194" Width="312.073" FontSize="14" Background="BlueViolet">
+
+
+    <Border Background="Green" CornerRadius="20" Margin="20">
+        <StackPanel>
+            <Label Content="Dodaj Pracownika" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Top" Width="166" FontSize="20"/>
+            <Label Content="Wybierz tabele:" HorizontalAlignment="Left" Margin="26,5,0,0" VerticalAlignment="Top" Width="120" FontSize="16"/>
+            <ComboBox x:Name="tabela" Margin="0,0,-0.4,0" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" Width="266">
+                <ComboBoxItem Content="prac_stan"/>
+                <ComboBoxItem Content="pracownicy"/>
+                <ComboBoxItem Content="rozmowy"/>
+                <ComboBoxItem Content="stanowiska"/>
+                <ComboBoxItem Content="dzial"/>
+                <ComboBoxItem Content="oferty"/>
+                <ComboBoxItem x:Name="comboBoxItem" Content="podania"/>
+            </ComboBox>
+            <Label Content="Nazwiskoa pracownika którego&#xD;&#xA; chcesz usunąć:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="246" FontSize="16"/>
+            <TextBox x:Name="nazwisko" Height="23" TextWrapping="Wrap" Margin="0,0,-0.4,0" TextChanged="TextBox_TextChanged"/>
+            <DataGrid x:Name="grid" Height="100" Margin="5,5,5,0" ItemsSource="{Binding}" FontSize="10"/>
+            <Label Content="Id usuwanego rekordu:" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top" Width="175" FontSize="16"/>
+            <TextBox x:Name="id" HorizontalAlignment="Left" Height="23" Margin="30,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
+            <Label x:Name="id2txt" Content="Id2 usuwanego rekordu:" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top" Width="200" FontSize="16" Visibility="Collapsed" />
+            <TextBox  x:Name="id2" Height="23" TextWrapping="Wrap"  Margin="26,0,135.6,0" Visibility="Collapsed"  />
+            
+            <Button Content="Usuń" Click="Button_Click" Margin="2,10,1.6,0" Height="28" />
+        </StackPanel>
+    </Border>
+
+
+
+</Window>
