@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace DB_App
 {
@@ -19,7 +20,7 @@ namespace DB_App
     /// Interaction logic for Usun.xaml
     /// </summary>
     public partial class Usun : Window
-    {
+    {   
         String a, b,tab;
         DataTable x = new DataTable();
         public Usun(String log,String pwd)
@@ -31,8 +32,10 @@ namespace DB_App
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Conector con = new Conector(a, b);
-            switch (tabela.SelectedIndex)
+           
+            /*Conector con = new Conector(a, b);
+            x = con.Select("SELECT * FROM "+boxTabel.Text+" WHERE nazwisko LIKE '%" + nazwisko.Text + "%';");
+            switch (boxTabel.SelectedIndex)
             {
                 case 2:
                     
@@ -66,14 +69,14 @@ namespace DB_App
 
 
             }
-            
+            */
             grid.UpdateLayout();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Conector con = new Conector(a, b);
-            switch (tabela.SelectedIndex)
+            /*Conector con = new Conector(a, b);
+            switch (boxTabel.SelectedIndex)
             {
                 case 2:
                     con.Delete("DELETE FROM `kadry`.`pracownicy` WHERE (`idPracownicy` = '" +Convert.ToInt32(id2.Text)+ "');");
@@ -102,16 +105,16 @@ namespace DB_App
                 
 
             }
-           
+           */
             this.Close();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            tab =  tabela.SelectedItem.ToString();
+            tab =  boxTabel.SelectedItem.ToString();
             tab = tab.Substring(tab.IndexOf(":") + 1);
             
-            if (tabela.SelectedIndex==6 && id2.Visibility== Visibility.Collapsed && id2txt.Visibility== Visibility.Collapsed)
+            if (boxTabel.SelectedIndex==6 && id2.Visibility== Visibility.Collapsed && id2txt.Visibility== Visibility.Collapsed)
             {
                 id2txt.Visibility = Visibility.Visible;
                 id2.Visibility = Visibility.Visible;

@@ -17,10 +17,10 @@ namespace DB_App
     /// <summary>
     /// Interaction logic for DodajPodanie.xaml
     /// </summary>
-    public partial class DodajPodanie : Window
+    public partial class Dodaj : Window
     {
         private String log, has;
-        public DodajPodanie(String log, String has)
+        public Dodaj(String log, String has)
         {
             
             InitializeComponent();
@@ -43,8 +43,8 @@ namespace DB_App
                 dateOnly1 = (DateTime)picker.SelectedDate;
                 Console.WriteLine(dateOnly1.ToString("yyyy-MM-dd"));
             }
-            Conector con = new Conector(log, has);
-            con.InsertKan(imie.Text, nazwisko.Text,dateOnly1.ToString("yyyy-MM-dd"), dateOnly2.ToString("yyyy-MM-dd"),wyksztalcenie.Text, miasto.Text, adres.Text, nr_tel.Text,id_oferty.Text,id_stan.Text);
+           // Conector con = new Conector(log, has);
+           // con.InsertKan(imie.Text, nazwisko.Text,dateOnly1.ToString("yyyy-MM-dd"), dateOnly2.ToString("yyyy-MM-dd"),wyksztalcenie.Text, miasto.Text, adres.Text, nr_tel.Text,id_oferty.Text,id_stan.Text);
             this.Close();
         }
     }

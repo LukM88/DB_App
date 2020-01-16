@@ -23,15 +23,10 @@ namespace DB_App
     {
         private String login, haslo;
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Dodawanie_Prac a=new Dodawanie_Prac(login, haslo);
-            a.Show();
-        }
-
+        
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            DodajPodanie a = new DodajPodanie(login,haslo);
+            Dodaj a = new Dodaj(login,haslo);
             a.Show();
         }
 
@@ -41,15 +36,40 @@ namespace DB_App
             a.Show();
         }
 
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
         public MainWindow(String uid,String password)
         {
             InitializeComponent();
             this.login = uid;
             this.haslo = password;
-            Conector con = new Conector(login, haslo);
+            
+            using (var entity = new kadryEntities())
+            {
+                var tab = entity.TABELE.ToArray();
+                List<String> tabele=new List<string>();
+                for(int i = 0; i < tab.Length; i++)
+                {
+                    tabele.Add(tab[i].TABLE_NAME.ToString());
+                }
+                box.ItemsSource = tabele;
+                box.SelectedIndex = 0;
+                System.Console.WriteLine();
+                switch (box.Text)
+                {
+                    
+                    default:
+                        var tab2=entity.Pracownicy.ToArray();
+                        myGrid.DataContext = tab2;
+                        break;
+                }
+               
+            }
 
-            myGrid.DataContext = con.Select("SELECT * FROM pracownicy;");
-           // myGrid.DataContext = zasob1.DzialyDataTable.GetDataTableSchema();
+            // myGrid.DataContext = zasob1.DzialyDataTable.GetDataTableSchema();
         }
     }
 }

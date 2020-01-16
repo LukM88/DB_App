@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,7 +18,7 @@ namespace DB_App
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class Login : Window 
     {
         public Login()
         {
@@ -26,8 +27,23 @@ namespace DB_App
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Conector con = new Conector(this.login.Text,this.haslo.Password);
-            this.Close();
+
+               using (var entity = new kadryEntities())
+               {
+
+                  // var user = entity.AspNetUsers.Where(x=>x.UserName==login.Text && Convert.FromBase64String(x.PasswordHash)== haslo.Password  ).FirstOrDefault();
+                   //if (user!=null)
+                  // {
+                MainWindow app = new MainWindow(login.Text, haslo.Password);
+          
+                app.Show();
+
+                this.Close(); 
+               
+
+    
+            }
+              
         }
     }
 }
