@@ -33,5 +33,15 @@ namespace DB_App.Properties {
                 return ((string)(this["kadryConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQLEXPRESS;Initial Catalog=kadry;Integrated Security=True")]
+        public string kadryConnectionString1 {
+            get {
+                return ((string)(this["kadryConnectionString1"]));
+            }
+        }
     }
 }

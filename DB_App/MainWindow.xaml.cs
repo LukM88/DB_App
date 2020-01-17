@@ -38,8 +38,52 @@ namespace DB_App
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            using (var entity = new kadryEntities())
+            {
+                
+
+
+                switch (box.SelectedItem.ToString())
+                {
+                    case "Dzialy":
+                        var tab1 = entity.Dzialy.ToArray();
+                        myGrid.DataContext = tab1;
+                        break;
+                    case "Stanowiska":
+                        var tab3 = entity.Stanowiska.ToArray();
+                        myGrid.DataContext = tab3;
+                        break;
+
+                    case "Oferty":
+                        var tab2 = entity.Oferty.ToArray();
+                        myGrid.DataContext = tab2;
+                        break;
+                    case "Podania":
+                        var tab4 = entity.Podania.ToArray();
+                        myGrid.DataContext = tab4;
+                        break;
+                    case "Rozmowy":
+                        var tab6 = entity.Rozmowy.ToArray();
+                        myGrid.DataContext = tab6;
+                        break;
+                    case "stan_dzial":
+                        var tab5 = entity.stan_dzial.ToArray();
+                        myGrid.DataContext = tab5;
+                        break;
+                    case "stan_prac":
+                        var tab0 = entity.Database.ExecuteSqlCommand("SELECT * FROM stan_prac");
+                       
+                        myGrid.DataContext = tab0.ToString();
+                        break;
+                    default:
+                        var tab7 = entity.Pracownicy.ToArray();
+                        myGrid.DataContext = tab7;
+                        break;
+                }
+            }
+               
         }
+
 
         public MainWindow(String uid,String password)
         {
@@ -56,20 +100,12 @@ namespace DB_App
                     tabele.Add(tab[i].TABLE_NAME.ToString());
                 }
                 box.ItemsSource = tabele;
-                box.SelectedIndex = 0;
-                System.Console.WriteLine();
-                switch (box.Text)
-                {
-                    
-                    default:
-                        var tab2=entity.Pracownicy.ToArray();
-                        myGrid.DataContext = tab2;
-                        break;
-                }
-               
+                var tab2 = entity.Pracownicy.ToArray();
+                myGrid.DataContext = tab2;
+
             }
 
-            // myGrid.DataContext = zasob1.DzialyDataTable.GetDataTableSchema();
+           
         }
     }
 }
