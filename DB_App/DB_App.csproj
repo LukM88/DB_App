@@ -80,6 +80,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppUser.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
+    </Compile>
     <Compile Include="AspNetRoles.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>

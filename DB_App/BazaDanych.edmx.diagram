@@ -30,6 +30,7 @@
         <AssociationConnector Association="kadryModel.FK_RELATION_RELATIONS_STANOWIS2" ManuallyRouted="false" />
         <AssociationConnector Association="kadryModel.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="kadryModel.stan_prac" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="kadryModel.AppUser" Width="1.5" PointX="10.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

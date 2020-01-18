@@ -41,6 +41,7 @@ namespace DB_App
         public virtual DbSet<Stanowiska> Stanowiska { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TABELE> TABELE { get; set; }
+        public virtual DbSet<AppUser> AppUsers { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

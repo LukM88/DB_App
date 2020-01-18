@@ -27,20 +27,24 @@ namespace DB_App
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            
                using (var entity = new kadryEntities())
                {
 
-                  // var user = entity.AspNetUsers.Where(x=>x.UserName==login.Text && Convert.FromBase64String(x.PasswordHash)== haslo.Password  ).FirstOrDefault();
-                   //if (user!=null)
-                  // {
-                MainWindow app = new MainWindow(login.Text, haslo.Password);
-          
-                app.Show();
+                var user = entity.AppUsers.Where(x=>x.login==login.Text && x.password== haslo.Password  ).FirstOrDefault();
+                if (user != null)
+                {
+                    MainWindow app = new MainWindow(login.Text, haslo.Password);
 
-                this.Close(); 
-               
+                    app.Show();
 
+                    this.Close();
+
+                }
+                else
+                {
+                     MessageBox.Show("Wprowadzono błędne dane logowania","Błąd logowania",MessageBoxButton.OK);
+                }
     
             }
               

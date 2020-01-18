@@ -21,6 +21,16 @@
         <AssociationConnector Association="kadryModel1.FK_ROZMOWY_RELATIONS_PRACOWNI" ManuallyRouted="false" />
         <AssociationConnector Association="kadryModel1.FK_RELATION_RELATIONS_STANOWIS2" ManuallyRouted="false" />
         <AssociationConnector Association="kadryModel1.stan_prac" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="kadryModel1.C__MigrationHistory" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="kadryModel1.AppUser" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="kadryModel1.AspNetRole" Width="1.5" PointX="5.375" PointY="11.5" />
+        <EntityTypeShape EntityType="kadryModel1.AspNetUserClaim" Width="1.5" PointX="9.875" PointY="10" />
+        <EntityTypeShape EntityType="kadryModel1.AspNetUserLogin" Width="1.5" PointX="9.875" PointY="12.75" />
+        <EntityTypeShape EntityType="kadryModel1.AspNetUser" Width="1.5" PointX="7.625" PointY="10.375" />
+        <EntityTypeShape EntityType="kadryModel1.sysdiagram" Width="1.5" PointX="11.375" PointY="0.75" />
+        <AssociationConnector Association="kadryModel1.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="kadryModel1.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="kadryModel1.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

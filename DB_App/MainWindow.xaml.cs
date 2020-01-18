@@ -26,8 +26,8 @@ namespace DB_App
         
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Dodaj a = new Dodaj(login,haslo);
-            a.Show();
+             new Dodaj(login,haslo);
+           
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -71,9 +71,12 @@ namespace DB_App
                         myGrid.DataContext = tab5;
                         break;
                     case "stan_prac":
-                        var tab0 = entity.Database.ExecuteSqlCommand("SELECT * FROM stan_prac");
-                       
-                        myGrid.DataContext = tab0.ToString();
+                       // var tab0 = entity.Database.SqlQuery<?????>("SELECT * FROM stan_prac");
+                       /*TODO
+                        * 
+                        * 
+                       */
+                        //myGrid.DataContext = tab0;
                         break;
                     default:
                         var tab7 = entity.Pracownicy.ToArray();
