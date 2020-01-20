@@ -188,25 +188,17 @@ namespace DB_App
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModDzialy", nidPoParameter, nimiePoParameter, nmiastoParameter, nadresParameter);
         }
     
-        public virtual int ModOferty(Nullable<int> nO, Nullable<int> nS, Nullable<int> nD, Nullable<System.DateTime> nimiePo)
+        public virtual int ModOferty(Nullable<int> nO, Nullable<System.DateTime> data)
         {
             var nOParameter = nO.HasValue ?
                 new ObjectParameter("NO", nO) :
                 new ObjectParameter("NO", typeof(int));
     
-            var nSParameter = nS.HasValue ?
-                new ObjectParameter("NS", nS) :
-                new ObjectParameter("NS", typeof(int));
+            var dataParameter = data.HasValue ?
+                new ObjectParameter("data", data) :
+                new ObjectParameter("data", typeof(System.DateTime));
     
-            var nDParameter = nD.HasValue ?
-                new ObjectParameter("ND", nD) :
-                new ObjectParameter("ND", typeof(int));
-    
-            var nimiePoParameter = nimiePo.HasValue ?
-                new ObjectParameter("NimiePo", nimiePo) :
-                new ObjectParameter("NimiePo", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModOferty", nOParameter, nSParameter, nDParameter, nimiePoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModOferty", nOParameter, dataParameter);
         }
     
         public virtual int ModPodania(Nullable<int> nidPo, Nullable<int> nidR, Nullable<int> nidO, string nimiePo, string nnazwisko, string nmiasto, string nadres, Nullable<System.DateTime> ndataUr, string wyksz, Nullable<System.DateTime> ndataZl)
@@ -358,6 +350,95 @@ namespace DB_App
                 new ObjectParameter("NS", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModStanPrac", nOParameter, nSParameter);
+        }
+    
+        public virtual int AppUsDel(Nullable<int> idD)
+        {
+            var idDParameter = idD.HasValue ?
+                new ObjectParameter("idD", idD) :
+                new ObjectParameter("idD", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AppUsDel", idDParameter);
+        }
+    
+        public virtual int DelDzial(Nullable<int> idD)
+        {
+            var idDParameter = idD.HasValue ?
+                new ObjectParameter("idD", idD) :
+                new ObjectParameter("idD", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DelDzial", idDParameter);
+        }
+    
+        public virtual int OfertyDel(Nullable<int> idD)
+        {
+            var idDParameter = idD.HasValue ?
+                new ObjectParameter("idD", idD) :
+                new ObjectParameter("idD", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OfertyDel", idDParameter);
+        }
+    
+        public virtual int PodaniaDel(Nullable<int> idD)
+        {
+            var idDParameter = idD.HasValue ?
+                new ObjectParameter("idD", idD) :
+                new ObjectParameter("idD", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PodaniaDel", idDParameter);
+        }
+    
+        public virtual int PracowDel(Nullable<int> idD)
+        {
+            var idDParameter = idD.HasValue ?
+                new ObjectParameter("idD", idD) :
+                new ObjectParameter("idD", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PracowDel", idDParameter);
+        }
+    
+        public virtual int RozmowyDel(Nullable<int> idD)
+        {
+            var idDParameter = idD.HasValue ?
+                new ObjectParameter("idD", idD) :
+                new ObjectParameter("idD", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RozmowyDel", idDParameter);
+        }
+    
+        public virtual int StanDel(Nullable<int> id1)
+        {
+            var id1Parameter = id1.HasValue ?
+                new ObjectParameter("id1", id1) :
+                new ObjectParameter("id1", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StanDel", id1Parameter);
+        }
+    
+        public virtual int StanDzial(Nullable<int> id1, Nullable<int> id2)
+        {
+            var id1Parameter = id1.HasValue ?
+                new ObjectParameter("id1", id1) :
+                new ObjectParameter("id1", typeof(int));
+    
+            var id2Parameter = id2.HasValue ?
+                new ObjectParameter("id2", id2) :
+                new ObjectParameter("id2", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StanDzial", id1Parameter, id2Parameter);
+        }
+    
+        public virtual int StanDzialDel(Nullable<int> id1, Nullable<int> id2)
+        {
+            var id1Parameter = id1.HasValue ?
+                new ObjectParameter("id1", id1) :
+                new ObjectParameter("id1", typeof(int));
+    
+            var id2Parameter = id2.HasValue ?
+                new ObjectParameter("id2", id2) :
+                new ObjectParameter("id2", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StanDzialDel", id1Parameter, id2Parameter);
         }
     }
 }

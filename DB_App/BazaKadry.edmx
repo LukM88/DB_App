@@ -380,6 +380,12 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AppUsDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idD" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DelDzial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idD" Type="int" Mode="In" />
+        </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="ModAppUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NidPo" Type="int" Mode="In" />
@@ -395,9 +401,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
         </Function>
         <Function Name="ModOferty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NO" Type="int" Mode="In" />
-          <Parameter Name="NS" Type="int" Mode="In" />
-          <Parameter Name="ND" Type="int" Mode="In" />
-          <Parameter Name="NimiePo" Type="datetime" Mode="In" />
+          <Parameter Name="data" Type="datetime" Mode="In" />
         </Function>
         <Function Name="ModPodania" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NidPo" Type="int" Mode="In" />
@@ -442,6 +446,18 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <Parameter Name="NO" Type="int" Mode="In" />
           <Parameter Name="NS" Type="int" Mode="In" />
         </Function>
+        <Function Name="OfertyDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idD" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PodaniaDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idD" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PracowDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idD" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RozmowyDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idD" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -472,6 +488,13 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StanDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id1" Type="int" Mode="In" />
+        </Function>
+        <Function Name="StanDzialDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id1" Type="int" Mode="In" />
+          <Parameter Name="id2" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="kadryModel1StoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AppUsers" EntityType="Self.AppUsers" Schema="dbo" store:Type="Tables" />
@@ -973,9 +996,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           </FunctionImport>
           <FunctionImport Name="ModOferty">
             <Parameter Name="NO" Mode="In" Type="Int32" />
-            <Parameter Name="NS" Mode="In" Type="Int32" />
-            <Parameter Name="ND" Mode="In" Type="Int32" />
-            <Parameter Name="NimiePo" Mode="In" Type="DateTime" />
+            <Parameter Name="data" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ModPodania">
             <Parameter Name="NidPo" Mode="In" Type="Int32" />
@@ -1019,6 +1040,35 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <FunctionImport Name="ModStanPrac">
             <Parameter Name="NO" Mode="In" Type="Int32" />
             <Parameter Name="NS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AppUsDel">
+          <Parameter Name="idD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DelDzial">
+          <Parameter Name="idD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="OfertyDel">
+          <Parameter Name="idD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PodaniaDel">
+          <Parameter Name="idD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PracowDel">
+          <Parameter Name="idD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RozmowyDel">
+          <Parameter Name="idD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="StanDel">
+          <Parameter Name="id1" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="StanDzial">
+            <Parameter Name="id1" Mode="In" Type="Int32" />
+            <Parameter Name="id2" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="StanDzialDel">
+            <Parameter Name="id1" Mode="In" Type="Int32" />
+            <Parameter Name="id2" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1254,6 +1304,14 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <FunctionImportMapping FunctionImportName="ModStanDzial" FunctionName="kadryModel1.Store.ModStanDzial" />
           <FunctionImportMapping FunctionImportName="ModStano" FunctionName="kadryModel1.Store.ModStano" />
           <FunctionImportMapping FunctionImportName="ModStanPrac" FunctionName="kadryModel1.Store.ModStanPrac" />
+          <FunctionImportMapping FunctionImportName="AppUsDel" FunctionName="kadryModel1.Store.AppUsDel" />
+          <FunctionImportMapping FunctionImportName="DelDzial" FunctionName="kadryModel1.Store.DelDzial" />
+          <FunctionImportMapping FunctionImportName="OfertyDel" FunctionName="kadryModel1.Store.OfertyDel" />
+          <FunctionImportMapping FunctionImportName="PodaniaDel" FunctionName="kadryModel1.Store.PodaniaDel" />
+          <FunctionImportMapping FunctionImportName="PracowDel" FunctionName="kadryModel1.Store.PracowDel" />
+          <FunctionImportMapping FunctionImportName="RozmowyDel" FunctionName="kadryModel1.Store.RozmowyDel" />
+          <FunctionImportMapping FunctionImportName="StanDel" FunctionName="kadryModel1.Store.StanDel" />
+          <FunctionImportMapping FunctionImportName="StanDzialDel" FunctionName="kadryModel1.Store.StanDzialDel" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1268,7 +1326,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

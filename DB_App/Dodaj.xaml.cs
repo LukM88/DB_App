@@ -331,7 +331,7 @@ namespace DB_App
             this.has = has;
             using (var entity = new kadryEntities2())
             {
-                Console.WriteLine("FU");
+              
                 var user = entity.AppUsers.Where(x => x.login == log && x.password == has && (x.Role == "m" || x.Role=="a")).FirstOrDefault();
                 if (user != null)
                 {
