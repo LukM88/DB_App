@@ -145,5 +145,219 @@ namespace DB_App
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual int ModAppUsers(Nullable<int> nidPo, string login, string pass, string role)
+        {
+            var nidPoParameter = nidPo.HasValue ?
+                new ObjectParameter("NidPo", nidPo) :
+                new ObjectParameter("NidPo", typeof(int));
+    
+            var loginParameter = login != null ?
+                new ObjectParameter("login", login) :
+                new ObjectParameter("login", typeof(string));
+    
+            var passParameter = pass != null ?
+                new ObjectParameter("pass", pass) :
+                new ObjectParameter("pass", typeof(string));
+    
+            var roleParameter = role != null ?
+                new ObjectParameter("role", role) :
+                new ObjectParameter("role", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModAppUsers", nidPoParameter, loginParameter, passParameter, roleParameter);
+        }
+    
+        public virtual int ModDzialy(Nullable<int> nidPo, string nimiePo, string nmiasto, string nadres)
+        {
+            var nidPoParameter = nidPo.HasValue ?
+                new ObjectParameter("NidPo", nidPo) :
+                new ObjectParameter("NidPo", typeof(int));
+    
+            var nimiePoParameter = nimiePo != null ?
+                new ObjectParameter("NimiePo", nimiePo) :
+                new ObjectParameter("NimiePo", typeof(string));
+    
+            var nmiastoParameter = nmiasto != null ?
+                new ObjectParameter("Nmiasto", nmiasto) :
+                new ObjectParameter("Nmiasto", typeof(string));
+    
+            var nadresParameter = nadres != null ?
+                new ObjectParameter("Nadres", nadres) :
+                new ObjectParameter("Nadres", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModDzialy", nidPoParameter, nimiePoParameter, nmiastoParameter, nadresParameter);
+        }
+    
+        public virtual int ModOferty(Nullable<int> nO, Nullable<int> nS, Nullable<int> nD, Nullable<System.DateTime> nimiePo)
+        {
+            var nOParameter = nO.HasValue ?
+                new ObjectParameter("NO", nO) :
+                new ObjectParameter("NO", typeof(int));
+    
+            var nSParameter = nS.HasValue ?
+                new ObjectParameter("NS", nS) :
+                new ObjectParameter("NS", typeof(int));
+    
+            var nDParameter = nD.HasValue ?
+                new ObjectParameter("ND", nD) :
+                new ObjectParameter("ND", typeof(int));
+    
+            var nimiePoParameter = nimiePo.HasValue ?
+                new ObjectParameter("NimiePo", nimiePo) :
+                new ObjectParameter("NimiePo", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModOferty", nOParameter, nSParameter, nDParameter, nimiePoParameter);
+        }
+    
+        public virtual int ModPodania(Nullable<int> nidPo, Nullable<int> nidR, Nullable<int> nidO, string nimiePo, string nnazwisko, string nmiasto, string nadres, Nullable<System.DateTime> ndataUr, string wyksz, Nullable<System.DateTime> ndataZl)
+        {
+            var nidPoParameter = nidPo.HasValue ?
+                new ObjectParameter("NidPo", nidPo) :
+                new ObjectParameter("NidPo", typeof(int));
+    
+            var nidRParameter = nidR.HasValue ?
+                new ObjectParameter("NidR", nidR) :
+                new ObjectParameter("NidR", typeof(int));
+    
+            var nidOParameter = nidO.HasValue ?
+                new ObjectParameter("NidO", nidO) :
+                new ObjectParameter("NidO", typeof(int));
+    
+            var nimiePoParameter = nimiePo != null ?
+                new ObjectParameter("NimiePo", nimiePo) :
+                new ObjectParameter("NimiePo", typeof(string));
+    
+            var nnazwiskoParameter = nnazwisko != null ?
+                new ObjectParameter("nnazwisko", nnazwisko) :
+                new ObjectParameter("nnazwisko", typeof(string));
+    
+            var nmiastoParameter = nmiasto != null ?
+                new ObjectParameter("Nmiasto", nmiasto) :
+                new ObjectParameter("Nmiasto", typeof(string));
+    
+            var nadresParameter = nadres != null ?
+                new ObjectParameter("Nadres", nadres) :
+                new ObjectParameter("Nadres", typeof(string));
+    
+            var ndataUrParameter = ndataUr.HasValue ?
+                new ObjectParameter("NdataUr", ndataUr) :
+                new ObjectParameter("NdataUr", typeof(System.DateTime));
+    
+            var wykszParameter = wyksz != null ?
+                new ObjectParameter("Wyksz", wyksz) :
+                new ObjectParameter("Wyksz", typeof(string));
+    
+            var ndataZlParameter = ndataZl.HasValue ?
+                new ObjectParameter("NdataZl", ndataZl) :
+                new ObjectParameter("NdataZl", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModPodania", nidPoParameter, nidRParameter, nidOParameter, nimiePoParameter, nnazwiskoParameter, nmiastoParameter, nadresParameter, ndataUrParameter, wykszParameter, ndataZlParameter);
+        }
+    
+        public virtual int ModPrac_dzial(Nullable<int> nO, Nullable<int> nS)
+        {
+            var nOParameter = nO.HasValue ?
+                new ObjectParameter("NO", nO) :
+                new ObjectParameter("NO", typeof(int));
+    
+            var nSParameter = nS.HasValue ?
+                new ObjectParameter("NS", nS) :
+                new ObjectParameter("NS", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModPrac_dzial", nOParameter, nSParameter);
+        }
+    
+        public virtual int ModPracownicy(Nullable<int> nidPo, string nimiePo, string nnazwisko, string nmiasto, string nadres, string wyksz, Nullable<double> ndataZl)
+        {
+            var nidPoParameter = nidPo.HasValue ?
+                new ObjectParameter("NidPo", nidPo) :
+                new ObjectParameter("NidPo", typeof(int));
+    
+            var nimiePoParameter = nimiePo != null ?
+                new ObjectParameter("NimiePo", nimiePo) :
+                new ObjectParameter("NimiePo", typeof(string));
+    
+            var nnazwiskoParameter = nnazwisko != null ?
+                new ObjectParameter("nnazwisko", nnazwisko) :
+                new ObjectParameter("nnazwisko", typeof(string));
+    
+            var nmiastoParameter = nmiasto != null ?
+                new ObjectParameter("Nmiasto", nmiasto) :
+                new ObjectParameter("Nmiasto", typeof(string));
+    
+            var nadresParameter = nadres != null ?
+                new ObjectParameter("Nadres", nadres) :
+                new ObjectParameter("Nadres", typeof(string));
+    
+            var wykszParameter = wyksz != null ?
+                new ObjectParameter("Wyksz", wyksz) :
+                new ObjectParameter("Wyksz", typeof(string));
+    
+            var ndataZlParameter = ndataZl.HasValue ?
+                new ObjectParameter("NdataZl", ndataZl) :
+                new ObjectParameter("NdataZl", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModPracownicy", nidPoParameter, nimiePoParameter, nnazwiskoParameter, nmiastoParameter, nadresParameter, wykszParameter, ndataZlParameter);
+        }
+    
+        public virtual int ModRozmowy(Nullable<int> nidPo, Nullable<int> nP, Nullable<int> nR, Nullable<System.DateTime> nimiePo)
+        {
+            var nidPoParameter = nidPo.HasValue ?
+                new ObjectParameter("NidPo", nidPo) :
+                new ObjectParameter("NidPo", typeof(int));
+    
+            var nPParameter = nP.HasValue ?
+                new ObjectParameter("NP", nP) :
+                new ObjectParameter("NP", typeof(int));
+    
+            var nRParameter = nR.HasValue ?
+                new ObjectParameter("NR", nR) :
+                new ObjectParameter("NR", typeof(int));
+    
+            var nimiePoParameter = nimiePo.HasValue ?
+                new ObjectParameter("NimiePo", nimiePo) :
+                new ObjectParameter("NimiePo", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModRozmowy", nidPoParameter, nPParameter, nRParameter, nimiePoParameter);
+        }
+    
+        public virtual int ModStanDzial(Nullable<int> nO, Nullable<int> nS)
+        {
+            var nOParameter = nO.HasValue ?
+                new ObjectParameter("NO", nO) :
+                new ObjectParameter("NO", typeof(int));
+    
+            var nSParameter = nS.HasValue ?
+                new ObjectParameter("NS", nS) :
+                new ObjectParameter("NS", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModStanDzial", nOParameter, nSParameter);
+        }
+    
+        public virtual int ModStano(Nullable<int> nidPo, string nimiePo)
+        {
+            var nidPoParameter = nidPo.HasValue ?
+                new ObjectParameter("NidPo", nidPo) :
+                new ObjectParameter("NidPo", typeof(int));
+    
+            var nimiePoParameter = nimiePo != null ?
+                new ObjectParameter("NimiePo", nimiePo) :
+                new ObjectParameter("NimiePo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModStano", nidPoParameter, nimiePoParameter);
+        }
+    
+        public virtual int ModStanPrac(Nullable<int> nO, Nullable<int> nS)
+        {
+            var nOParameter = nO.HasValue ?
+                new ObjectParameter("NO", nO) :
+                new ObjectParameter("NO", typeof(int));
+    
+            var nSParameter = nS.HasValue ?
+                new ObjectParameter("NS", nS) :
+                new ObjectParameter("NS", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModStanPrac", nOParameter, nSParameter);
+        }
     }
 }
