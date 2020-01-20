@@ -449,7 +449,8 @@ namespace DB_App
                             }
                             catch (Exception)
                             {
-                                this.Close();
+                                MessageBox.Show("Wprowadzono błędne dane");
+                                
                             }
                             break;
                         case "AppUsers":
@@ -471,7 +472,8 @@ namespace DB_App
                             }
                             catch (Exception)
                             {
-                                this.Close();
+                                MessageBox.Show("Wprowadzono błędne dane");
+                               
                             }
                             break;
 
@@ -507,7 +509,8 @@ namespace DB_App
                             }
                             catch (Exception)
                             {
-                                this.Close();
+                                MessageBox.Show("Wprowadzono błędne dane");
+                                
                             }
                             break;
                         case "Rozmowy":
@@ -536,7 +539,7 @@ namespace DB_App
                             }
                             catch (Exception)
                             {
-                                this.Close();
+                                MessageBox.Show("Wprowadzono błędne dane"); 
                             }
                             break;
                         case "stan_dzial":
@@ -556,7 +559,7 @@ namespace DB_App
                             }
                             catch (Exception)
                             {
-                                this.Close();
+                                MessageBox.Show("Wprowadzono błędne dane");
                             }
                             
 
@@ -593,19 +596,22 @@ namespace DB_App
                             }
                             catch (Exception)
                             {
-                                this.Close();
+                                MessageBox.Show("Wprowadzono błędne dane");
                             }
                             break;
                     }
                     try
                     {
                         entity.SaveChanges();
+                        MessageBox.Show("Dodawanie powiodło się");
+
+
                     }
                     catch (EntitySqlException)
                     {
-                        
+                        MessageBox.Show("Wystąpił błąd zapisu");
                     }
-                    this.Close();
+                    
                     
                 }
             }

@@ -265,11 +265,10 @@ namespace DB_App
             }
         }
 
-       
-
-        
-            
-            
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            myGrid.UpdateLayout();
+        }
 
         public MainWindow(String uid,String password)
         {

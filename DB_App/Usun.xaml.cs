@@ -89,7 +89,7 @@ namespace DB_App
                         break;
                 }
                 entity.SaveChanges();
-                this.Close();
+                grid.UpdateLayout();
             }
         }
 
