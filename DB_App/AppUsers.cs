@@ -12,7 +12,7 @@ namespace DB_App
     using System;
     using System.Collections.Generic;
     
-    public partial class AppUser
+    public partial class AppUsers
     {
         public int uId { get; set; }
         public string login { get; set; }

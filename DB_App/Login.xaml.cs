@@ -28,7 +28,7 @@ namespace DB_App
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
-               using (var entity = new kadryEntities())
+               using (var entity = new kadryEntities2())
                {
 
                 var user = entity.AppUsers.Where(x=>x.login==login.Text && x.password== haslo.Password  ).FirstOrDefault();

@@ -15,10 +15,10 @@ namespace DB_App
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class kadryEntities1 : DbContext
+    public partial class kadryEntities2 : DbContext
     {
-        public kadryEntities1()
-            : base("name=kadryEntities1")
+        public kadryEntities2()
+            : base("name=kadryEntities2")
         {
         }
     
@@ -27,6 +27,12 @@ namespace DB_App
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AppUsers> AppUsers { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Dzialy> Dzialy { get; set; }
         public virtual DbSet<Oferty> Oferty { get; set; }
         public virtual DbSet<Podania> Podania { get; set; }
@@ -34,6 +40,7 @@ namespace DB_App
         public virtual DbSet<Rozmowy> Rozmowy { get; set; }
         public virtual DbSet<stan_dzial> stan_dzial { get; set; }
         public virtual DbSet<Stanowiska> Stanowiska { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TABELE> TABELE { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

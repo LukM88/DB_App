@@ -21,7 +21,7 @@ namespace DB_App
         }
     
         public int idPo { get; set; }
-        public int idR { get; set; }
+        public Nullable<int> idR { get; set; }
         public int idO { get; set; }
         public string imiePo { get; set; }
         public string nazwiskoPo { get; set; }

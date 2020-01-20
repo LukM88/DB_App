@@ -60,6 +60,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -80,89 +81,74 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AppUser.cs">
-      <DependentUpon>BazaDanych.tt</DependentUpon>
+    <Compile Include="AppUsers.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetRoles.cs">
-      <DependentUpon>BazaDanych.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserClaims.cs">
-      <DependentUpon>BazaDanych.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserLogins.cs">
-      <DependentUpon>BazaDanych.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUsers.cs">
-      <DependentUpon>BazaDanych.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
-    <Compile Include="BazaDanych.Context.cs">
+    <Compile Include="BazaKadry.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BazaDanych.Context.tt</DependentUpon>
+      <DependentUpon>BazaKadry.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="BazaDanych.cs">
+    <Compile Include="BazaKadry.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BazaDanych.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
-    <Compile Include="BazaDanych.Designer.cs">
+    <Compile Include="BazaKadry.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BazaDanych.edmx</DependentUpon>
+      <DependentUpon>BazaKadry.edmx</DependentUpon>
     </Compile>
     <Compile Include="C__MigrationHistory.cs">
-      <DependentUpon>BazaDanych.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="Dodaj.xaml.cs">
       <DependentUpon>Dodaj.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dzialy.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="Oferty.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="Podania.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="Pracownicy.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="Rozmowy.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="Stanowiska.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="stan_dzial.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>BazaDanych.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="TABELE.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="Usun.xaml.cs">
       <DependentUpon>Usun.xaml</DependentUpon>
@@ -220,19 +206,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="BazaDanych.edmx">
+    <EntityDeploy Include="BazaKadry.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BazaDanych.Designer.cs</LastGenOutput>
+      <LastGenOutput>BazaKadry.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="BazaDanych.edmx.diagram">
-      <DependentUpon>BazaDanych.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="BazaKadry.edmx.diagram">
+      <DependentUpon>BazaKadry.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -258,25 +237,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BazaDanych.Context.tt">
+    <Content Include="BazaKadry.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BazaDanych.Context.cs</LastGenOutput>
-      <DependentUpon>BazaDanych.edmx</DependentUpon>
+      <DependentUpon>BazaKadry.edmx</DependentUpon>
+      <LastGenOutput>BazaKadry.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="BazaDanych.tt">
+    <Content Include="BazaKadry.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BazaDanych.edmx</DependentUpon>
-      <LastGenOutput>BazaDanych.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>BazaKadry.edmx</DependentUpon>
+      <LastGenOutput>BazaKadry.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

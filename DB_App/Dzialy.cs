@@ -18,6 +18,7 @@ namespace DB_App
         public Dzialy()
         {
             this.stan_dzial = new HashSet<stan_dzial>();
+            this.Pracownicy = new HashSet<Pracownicy>();
         }
     
         public int idD { get; set; }
@@ -27,5 +28,7 @@ namespace DB_App
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<stan_dzial> stan_dzial { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pracownicy> Pracownicy { get; set; }
     }
 }

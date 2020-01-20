@@ -9,13 +9,17 @@
 
 
     <Border Background="Green" CornerRadius="20" Margin="20">
-        <Grid>
+        <Grid  x:Name="Grid" HorizontalAlignment="Left" Height="532" Margin="0,40,0,0" VerticalAlignment="Top" Width="555"  >
+            <Label Content="Dodaj Podanie" HorizontalAlignment="Left" Margin="193,0,0,0" VerticalAlignment="Top" Width="166" FontSize="20" Grid.Row="1" />
+            <ComboBox x:Name="box" HorizontalAlignment="Left" Height="25" Margin="42,53,0,0" VerticalAlignment="Top" Width="475" SelectionChanged="ComboBox_SelectionChanged" DataContext="{Binding}" Grid.Row="2"/>
 
-            <Label Content="Dodaj Podanie" HorizontalAlignment="Left" Margin="193,0,0,0" VerticalAlignment="Top" Width="166" FontSize="20"/>
-            <Button Content="Dodaj podanie" Click="Button_Click" Margin="10,500,10.2,34.6" />
-            <ComboBox x:Name="box" HorizontalAlignment="Left" Height="25" Margin="42,37,0,0" VerticalAlignment="Top" Width="475" SelectionChanged="ComboBox_SelectionChanged" DataContext="{Binding}">
-                
-            </ComboBox>
+            <StackPanel x:Name="Stos" Margin="42,78,0,0" ScrollBar.Scroll="Stos_Scroll"/>
+            
+
+            
+
+            <Button Content="Dodaj podanie" Click="Button_Click" Margin="10,509,10,0"/>
+
         </Grid>
     </Border>
 

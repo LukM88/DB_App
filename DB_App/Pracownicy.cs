@@ -18,6 +18,7 @@ namespace DB_App
         public Pracownicy()
         {
             this.Rozmowy = new HashSet<Rozmowy>();
+            this.Dzialy = new HashSet<Dzialy>();
             this.Stanowiska = new HashSet<Stanowiska>();
         }
     
@@ -31,6 +32,8 @@ namespace DB_App
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rozmowy> Rozmowy { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Dzialy> Dzialy { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stanowiska> Stanowiska { get; set; }
     }

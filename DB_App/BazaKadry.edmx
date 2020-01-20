@@ -4,7 +4,77 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="kadryModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="kadryModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppUsers">
+          <Key>
+            <PropertyRef Name="uId" />
+          </Key>
+          <Property Name="uId" Type="int" Nullable="false" />
+          <Property Name="login" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="password" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Role" Type="nchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
         <EntityType Name="Dzialy">
           <Key>
             <PropertyRef Name="idD" />
@@ -28,7 +98,7 @@
             <PropertyRef Name="idPo" />
           </Key>
           <Property Name="idPo" Type="int" Nullable="false" />
-          <Property Name="idR" Type="int" Nullable="false" />
+          <Property Name="idR" Type="int" />
           <Property Name="idO" Type="int" Nullable="false" />
           <Property Name="imiePo" Type="varchar" MaxLength="45" />
           <Property Name="nazwiskoPo" Type="varchar" MaxLength="45" />
@@ -37,6 +107,14 @@
           <Property Name="dataUrPo" Type="datetime" />
           <Property Name="wyksztalceniePo" Type="varchar" MaxLength="45" />
           <Property Name="dataZlozPo" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Prac_dzial">
+          <Key>
+            <PropertyRef Name="idP" />
+            <PropertyRef Name="idD" />
+          </Key>
+          <Property Name="idP" Type="int" Nullable="false" />
+          <Property Name="idD" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Pracownicy">
           <Key>
@@ -82,6 +160,16 @@
           <Property Name="idS" Type="int" Nullable="false" />
           <Property Name="nazwa" Type="varchar" MaxLength="45" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TABELE">
@@ -90,6 +178,62 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           </Key>
           <Property Name="TABLE_NAME" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OFERTY_RELATIONS_RELATION">
           <End Role="stan_dzial" Type="Self.stan_dzial" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -121,7 +265,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PODANIA_RELATIONS_ROZMOWY">
-          <End Role="Rozmowy" Type="Self.Rozmowy" Multiplicity="1" />
+          <End Role="Rozmowy" Type="Self.Rozmowy" Multiplicity="0..1" />
           <End Role="Podania" Type="Self.Podania" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rozmowy">
@@ -129,6 +273,30 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
             </Principal>
             <Dependent Role="Podania">
               <PropertyRef Name="idR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prac_dzial_Dzialy">
+          <End Role="Dzialy" Type="Self.Dzialy" Multiplicity="1" />
+          <End Role="Prac_dzial" Type="Self.Prac_dzial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dzialy">
+              <PropertyRef Name="idD" />
+            </Principal>
+            <Dependent Role="Prac_dzial">
+              <PropertyRef Name="idD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prac_dzial_Pracownicy">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+          <End Role="Prac_dzial" Type="Self.Prac_dzial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="idP" />
+            </Principal>
+            <Dependent Role="Prac_dzial">
+              <PropertyRef Name="idP" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -244,19 +412,44 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="kadryModel1StoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppUsers" EntityType="Self.AppUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dzialy" EntityType="Self.Dzialy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Oferty" EntityType="Self.Oferty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Podania" EntityType="Self.Podania" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prac_dzial" EntityType="Self.Prac_dzial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rozmowy" EntityType="Self.Rozmowy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="stan_dzial" EntityType="Self.stan_dzial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="stan_prac" EntityType="Self.stan_prac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stanowiska" EntityType="Self.Stanowiska" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TABELE" EntityType="Self.TABELE" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [TABELE].[TABLE_NAME] AS [TABLE_NAME]
     FROM [dbo].[TABELE] AS [TABELE]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
           <AssociationSet Name="FK_OFERTY_RELATIONS_RELATION" Association="Self.FK_OFERTY_RELATIONS_RELATION">
             <End Role="stan_dzial" EntitySet="stan_dzial" />
             <End Role="Oferty" EntitySet="Oferty" />
@@ -268,6 +461,14 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <AssociationSet Name="FK_PODANIA_RELATIONS_ROZMOWY" Association="Self.FK_PODANIA_RELATIONS_ROZMOWY">
             <End Role="Rozmowy" EntitySet="Rozmowy" />
             <End Role="Podania" EntitySet="Podania" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prac_dzial_Dzialy" Association="Self.FK_Prac_dzial_Dzialy">
+            <End Role="Dzialy" EntitySet="Dzialy" />
+            <End Role="Prac_dzial" EntitySet="Prac_dzial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prac_dzial_Pracownicy" Association="Self.FK_Prac_dzial_Pracownicy">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Prac_dzial" EntitySet="Prac_dzial" />
           </AssociationSet>
           <AssociationSet Name="FK_RELATION_RELATIONS_DZIALY" Association="Self.FK_RELATION_RELATIONS_DZIALY">
             <End Role="Dzialy" EntitySet="Dzialy" />
@@ -294,10 +495,79 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
             <End Role="Rozmowy" EntitySet="Rozmowy" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="kadryModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppUsers">
+          <Key>
+            <PropertyRef Name="uId" />
+          </Key>
+          <Property Name="uId" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
         <EntityType Name="Dzialy">
           <Key>
             <PropertyRef Name="idD" />
@@ -307,6 +577,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <Property Name="miastoD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="adresD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="stan_dzial" Relationship="Self.FK_RELATION_RELATIONS_DZIALY" FromRole="Dzialy" ToRole="stan_dzial" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.Prac_dzial" FromRole="Dzialy" ToRole="Pracownicy" />
         </EntityType>
         <EntityType Name="Oferty">
           <Key>
@@ -324,7 +595,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
             <PropertyRef Name="idPo" />
           </Key>
           <Property Name="idPo" Type="Int32" Nullable="false" />
-          <Property Name="idR" Type="Int32" Nullable="false" />
+          <Property Name="idR" Type="Int32" />
           <Property Name="idO" Type="Int32" Nullable="false" />
           <Property Name="imiePo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="nazwiskoPo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
@@ -349,6 +620,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <Property Name="nrTelP" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
           <Property Name="placaP" Type="Double" />
           <NavigationProperty Name="Rozmowy" Relationship="Self.FK_ROZMOWY_RELATIONS_PRACOWNI" FromRole="Pracownicy" ToRole="Rozmowy" />
+          <NavigationProperty Name="Dzialy" Relationship="Self.Prac_dzial" FromRole="Pracownicy" ToRole="Dzialy" />
           <NavigationProperty Name="Stanowiska" Relationship="Self.stan_prac" FromRole="Pracownicy" ToRole="Stanowiska" />
         </EntityType>
         <EntityType Name="Rozmowy">
@@ -383,12 +655,50 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <NavigationProperty Name="stan_dzial" Relationship="Self.FK_RELATION_RELATIONS_STANOWIS2" FromRole="Stanowiska" ToRole="stan_dzial" />
           <NavigationProperty Name="Pracownicy" Relationship="Self.stan_prac" FromRole="Stanowiska" ToRole="Pracownicy" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="TABELE">
           <Key>
             <PropertyRef Name="TABLE_NAME" />
           </Key>
           <Property Name="TABLE_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RELATION_RELATIONS_DZIALY">
           <End Role="Dzialy" Type="Self.Dzialy" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -434,7 +744,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PODANIA_RELATIONS_ROZMOWY">
-          <End Role="Rozmowy" Type="Self.Rozmowy" Multiplicity="1" />
+          <End Role="Rozmowy" Type="Self.Rozmowy" Multiplicity="0..1" />
           <End Role="Podania" Type="Self.Podania" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rozmowy">
@@ -483,11 +793,25 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <Association Name="Prac_dzial">
+          <End Role="Dzialy" Type="Self.Dzialy" Multiplicity="*" />
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="*" />
+        </Association>
         <Association Name="stan_prac">
           <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="*" />
           <End Role="Stanowiska" Type="Self.Stanowiska" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="kadryEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="kadryEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AppUsers" EntityType="Self.AppUsers" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="Dzialy" EntityType="Self.Dzialy" />
           <EntitySet Name="Oferty" EntityType="Self.Oferty" />
           <EntitySet Name="Podania" EntityType="Self.Podania" />
@@ -495,7 +819,16 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <EntitySet Name="Rozmowy" EntityType="Self.Rozmowy" />
           <EntitySet Name="stan_dzial" EntityType="Self.stan_dzial" />
           <EntitySet Name="Stanowiska" EntityType="Self.Stanowiska" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TABELE" EntityType="Self.TABELE" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
           <AssociationSet Name="FK_RELATION_RELATIONS_DZIALY" Association="Self.FK_RELATION_RELATIONS_DZIALY">
             <End Role="Dzialy" EntitySet="Dzialy" />
             <End Role="stan_dzial" EntitySet="stan_dzial" />
@@ -523,6 +856,14 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <AssociationSet Name="FK_RELATION_RELATIONS_STANOWIS2" Association="Self.FK_RELATION_RELATIONS_STANOWIS2">
             <End Role="Stanowiska" EntitySet="Stanowiska" />
             <End Role="stan_dzial" EntitySet="stan_dzial" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="Prac_dzial" Association="Self.Prac_dzial">
+            <End Role="Dzialy" EntitySet="Dzialy" />
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
           </AssociationSet>
           <AssociationSet Name="stan_prac" Association="Self.stan_prac">
             <End Role="Pracownicy" EntitySet="Pracownicy" />
@@ -575,7 +916,72 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="kadryModel1StoreContainer" CdmEntityContainer="kadryEntities1">
+        <EntityContainerMapping StorageEntityContainer="kadryModel1StoreContainer" CdmEntityContainer="kadryEntities2">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="kadryModel1.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppUsers">
+            <EntityTypeMapping TypeName="kadryModel1.AppUsers">
+              <MappingFragment StoreEntitySet="AppUsers">
+                <ScalarProperty Name="uId" ColumnName="uId" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="kadryModel1.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="kadryModel1.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="kadryModel1.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="kadryModel1.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Dzialy">
             <EntityTypeMapping TypeName="kadryModel1.Dzialy">
               <MappingFragment StoreEntitySet="Dzialy">
@@ -651,6 +1057,17 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="kadryModel1.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TABELE">
             <EntityTypeMapping TypeName="kadryModel1.TABELE">
               <MappingFragment StoreEntitySet="TABELE">
@@ -658,6 +1075,22 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="kadryModel1.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Prac_dzial" TypeName="kadryModel1.Prac_dzial" StoreEntitySet="Prac_dzial">
+            <EndProperty Name="Dzialy">
+              <ScalarProperty Name="idD" ColumnName="idD" />
+            </EndProperty>
+            <EndProperty Name="Pracownicy">
+              <ScalarProperty Name="idP" ColumnName="idP" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="stan_prac" TypeName="kadryModel1.stan_prac" StoreEntitySet="stan_prac">
             <EndProperty Name="Pracownicy">
               <ScalarProperty Name="idP" ColumnName="idP" />
@@ -704,7 +1137,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
