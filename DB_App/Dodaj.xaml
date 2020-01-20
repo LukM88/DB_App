@@ -1,0 +1,28 @@
+﻿<Window x:Class="DB_App.Dodaj"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DB_App"
+        mc:Ignorable="d"
+        Title="Dodaj" Height="651.426" Width="601.829" FontSize="14" Background="BlueViolet">
+
+
+    <Border Background="Green" CornerRadius="20" Margin="20">
+        <Grid  x:Name="Grid" HorizontalAlignment="Left" Height="532" Margin="0,40,0,0" VerticalAlignment="Top" Width="555"  >
+            <Label Content="Dodaj Podanie" HorizontalAlignment="Left" Margin="193,0,0,0" VerticalAlignment="Top" Width="166" FontSize="20" Grid.Row="1" />
+            <ComboBox x:Name="box" HorizontalAlignment="Left" Height="25" Margin="42,53,0,0" VerticalAlignment="Top" Width="475" SelectionChanged="ComboBox_SelectionChanged" DataContext="{Binding}" Grid.Row="2"/>
+
+            <StackPanel x:Name="Stos" Margin="42,78,0,0" ScrollBar.Scroll="Stos_Scroll"/>
+            
+
+            
+
+            <Button Content="Dodaj podanie" Click="Button_Click" Margin="10,509,10,0"/>
+
+        </Grid>
+    </Border>
+
+
+
+</Window>

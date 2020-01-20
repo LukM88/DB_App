@@ -12,17 +12,7 @@
         <StackPanel>
             <Label Content="Dodaj Pracownika" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Top" Width="166" FontSize="20"/>
             <Label Content="Wybierz tabele:" HorizontalAlignment="Left" Margin="26,5,0,0" VerticalAlignment="Top" Width="120" FontSize="16"/>
-            <ComboBox x:Name="tabela" Margin="0,0,-0.4,0" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" Width="266">
-                <ComboBoxItem Content="prac_stan"/>
-                <ComboBoxItem Content="pracownicy"/>
-                <ComboBoxItem Content="rozmowy"/>
-                <ComboBoxItem Content="stanowiska"/>
-                <ComboBoxItem Content="dzial"/>
-                <ComboBoxItem Content="oferty"/>
-                <ComboBoxItem x:Name="comboBoxItem" Content="podania"/>
-            </ComboBox>
-            <Label Content="Nazwiskoa pracownika którego&#xD;&#xA; chcesz usunąć:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="246" FontSize="16"/>
-            <TextBox x:Name="nazwisko" Height="23" TextWrapping="Wrap" Margin="0,0,-0.4,0" TextChanged="TextBox_TextChanged"/>
+            <ComboBox x:Name="boxTabel" Margin="0,0,-0.4,0" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" Width="266" DataContext="{Binding}"/>
             <DataGrid x:Name="grid" Height="100" Margin="5,5,5,0" ItemsSource="{Binding}" FontSize="10"/>
             <Label Content="Id usuwanego rekordu:" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top" Width="175" FontSize="16"/>
             <TextBox x:Name="id" HorizontalAlignment="Left" Height="23" Margin="30,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>

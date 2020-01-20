@@ -12,7 +12,7 @@ namespace DB_App
     class Conector
     {
         static private bool flaga=true;
-        private MySqlConnection connection;
+        private  connection;
         private string server;
         private string database;
         private string uid;
@@ -89,65 +89,24 @@ namespace DB_App
         }
 
         //Insert statement
-        public void Insert()
+        public void Insert(String query)
         {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteReader();
 
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Błąd kwerędy");
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
-        public void InsertPrac(string text1, string text2, string text3, string text4, string text5, string text6)
-        {
-            if (text6.Length == 9)
-            {
-                try
-                {
-                    String query = "INSERT INTO `kadry`.`pracownicy` (`imie`, `nazwisko`, `miasto`, `adres`, `placa`, `nr_tel`) VALUES (" + text1 + "," + text2 + "," + text3 + " ," + text4 + "," + Convert.ToDouble(text5) + "," + text6 + ");";
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.ExecuteReader();
-
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Błąd kwerędy");
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Numer nieprawidłowy!");
-            }
-           
-            
-        }
-        public void InsertKan(string text1, string text2, string text3, string text4, string text5, string text6, string text7, string text8, string text9, string text10)
-        {
-            if (text8.Length == 9)
-            {
-                try
-                {
-                    String query = " INSERT INTO `kadry`.`podania` (`imie`, `nazwisko`, `data_uro`, `data_zglosz`, `wyksztalcenie`, `miasto`, `adres`, `nr_tel`, `Oferty_idOferty`, `Oferty_Stanowiska_idStanowiska`) VALUES (" + text1 + "," + text2 + ",'" + text3 + "' ,'" + text4 + "'," +text5+ "," + text6 + "," + text7 + " ," + text8 + "," + Convert.ToInt32(text9) + "," + Convert.ToInt32(text10) + ");";
-
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.ExecuteReader();
-
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Błąd kwerędy");
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Numer nieprawidłowy!");
-            }
-
-
-        }
+        
 
         //Update statement
         public void Update(String query)

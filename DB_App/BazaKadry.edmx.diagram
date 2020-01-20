@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d121f1b56470444f87845cf048041f3c" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="kadryModel1.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.AppUsers" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.AspNetRoles" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.AspNetUsers" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.Dzialy" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.Oferty" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.Podania" Width="1.5" PointX="12" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.Pracownicy" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.Rozmowy" Width="1.5" PointX="14.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.stan_dzial" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.Stanowiska" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kadryModel1.TABELE" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="kadryModel1.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="kadryModel1.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="kadryModel1.FK_RELATION_RELATIONS_DZIALY" ManuallyRouted="false" />
+        <AssociationConnector Association="kadryModel1.FK_OFERTY_RELATIONS_RELATION" ManuallyRouted="false" />
+        <AssociationConnector Association="kadryModel1.FK_PODANIA_RELATIONS_OFERTY" ManuallyRouted="false" />
+        <AssociationConnector Association="kadryModel1.FK_PODANIA_RELATIONS_ROZMOWY" ManuallyRouted="false" />
+        <AssociationConnector Association="kadryModel1.FK_ROZMOWY_RELATIONS_PODANIA" ManuallyRouted="false" />
+        <AssociationConnector Association="kadryModel1.FK_ROZMOWY_RELATIONS_PRACOWNI" ManuallyRouted="false" />
+        <AssociationConnector Association="kadryModel1.FK_RELATION_RELATIONS_STANOWIS2" ManuallyRouted="false" />
+        <AssociationConnector Association="kadryModel1.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="kadryModel1.Prac_dzial" ManuallyRouted="false" />
+        <AssociationConnector Association="kadryModel1.stan_prac" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
