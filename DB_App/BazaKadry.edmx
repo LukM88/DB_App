@@ -387,6 +387,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <Parameter Name="idD" Type="int" Mode="In" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="kierownicy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ModAppUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NidPo" Type="int" Mode="In" />
           <Parameter Name="login" Type="varchar" Mode="In" />
@@ -455,8 +456,14 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
         <Function Name="PracowDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idD" Type="int" Mode="In" />
         </Function>
+        <Function Name="pracownicyDzialu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idDzialu" Type="int" Mode="In" />
+        </Function>
         <Function Name="RozmowyDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idD" Type="int" Mode="In" />
+        </Function>
+        <Function Name="rozmowyPerDzien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="data" Type="datetime" Mode="In" />
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -495,6 +502,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <Parameter Name="id1" Type="int" Mode="In" />
           <Parameter Name="id2" Type="int" Mode="In" />
         </Function>
+        <Function Name="WolneEtaty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="kadryModel1StoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AppUsers" EntityType="Self.AppUsers" Schema="dbo" store:Type="Tables" />
@@ -1070,6 +1078,15 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
             <Parameter Name="id1" Mode="In" Type="Int32" />
             <Parameter Name="id2" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="kierownicy" ReturnType="Collection(kadryModel1.kierownicy_Result)">
+          </FunctionImport>
+          <FunctionImport Name="pracownicyDzialu" ReturnType="Collection(kadryModel1.pracownicyDzialu_Result)">
+          <Parameter Name="idDzialu" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="WolneEtaty" ReturnType="Collection(kadryModel1.WolneEtaty_Result)" />
+          <FunctionImport Name="rozmowyPerDzien" ReturnType="Collection(kadryModel1.rozmowyPerDzien_Result)">
+            <Parameter Name="data" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1081,6 +1098,28 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="kierownicy_Result">
+          <Property Type="String" Name="imieP" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="nazwiskoP" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="nazwa" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="nazwaD" Nullable="true" MaxLength="45" />
+        </ComplexType>
+        <ComplexType Name="pracownicyDzialu_Result">
+          <Property Type="String" Name="imieP" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="nazwiskoP" Nullable="true" MaxLength="45" />
+          <Property Type="Int32" Name="idD" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="WolneEtaty_Result">
+          <Property Type="String" Name="nazwaD" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="miastoD" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="nazwa" Nullable="true" MaxLength="45" />
+        </ComplexType>
+        <ComplexType Name="rozmowyPerDzien_Result">
+          <Property Type="Int32" Name="idR" Nullable="false" />
+          <Property Type="Int32" Name="idP" Nullable="false" />
+          <Property Type="Int32" Name="idPo" Nullable="false" />
+          <Property Type="DateTime" Name="dataRozmowy" Nullable="true" Precision="23" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1312,6 +1351,44 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <FunctionImportMapping FunctionImportName="RozmowyDel" FunctionName="kadryModel1.Store.RozmowyDel" />
           <FunctionImportMapping FunctionImportName="StanDel" FunctionName="kadryModel1.Store.StanDel" />
           <FunctionImportMapping FunctionImportName="StanDzialDel" FunctionName="kadryModel1.Store.StanDzialDel" />
+          <FunctionImportMapping FunctionImportName="kierownicy" FunctionName="kadryModel1.Store.kierownicy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kadryModel1.kierownicy_Result">
+                <ScalarProperty Name="imieP" ColumnName="imieP" />
+                <ScalarProperty Name="nazwiskoP" ColumnName="nazwiskoP" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="nazwaD" ColumnName="nazwaD" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pracownicyDzialu" FunctionName="kadryModel1.Store.pracownicyDzialu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kadryModel1.pracownicyDzialu_Result">
+                <ScalarProperty Name="imieP" ColumnName="imieP" />
+                <ScalarProperty Name="nazwiskoP" ColumnName="nazwiskoP" />
+                <ScalarProperty Name="idD" ColumnName="idD" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WolneEtaty" FunctionName="kadryModel1.Store.WolneEtaty">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kadryModel1.WolneEtaty_Result">
+                <ScalarProperty Name="nazwaD" ColumnName="nazwaD" />
+                <ScalarProperty Name="miastoD" ColumnName="miastoD" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="rozmowyPerDzien" FunctionName="kadryModel1.Store.rozmowyPerDzien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kadryModel1.rozmowyPerDzien_Result">
+                <ScalarProperty Name="idR" ColumnName="idR" />
+                <ScalarProperty Name="idP" ColumnName="idP" />
+                <ScalarProperty Name="idPo" ColumnName="idPo" />
+                <ScalarProperty Name="dataRozmowy" ColumnName="dataRozmowy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

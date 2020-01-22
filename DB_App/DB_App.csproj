@@ -56,6 +56,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MySql.Data, Version=8.0.16.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -120,6 +121,9 @@
     <Compile Include="Dzialy.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
+    <Compile Include="kierownicy_Result.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Oferty.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
@@ -129,7 +133,13 @@
     <Compile Include="Pracownicy.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
+    <Compile Include="pracownicyDzialu_Result.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Rozmowy.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rozmowyPerDzien_Result.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
@@ -152,6 +162,9 @@
     </Compile>
     <Compile Include="Usun.xaml.cs">
       <DependentUpon>Usun.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WolneEtaty_Result.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Page Include="Dodaj.xaml">
       <SubType>Designer</SubType>

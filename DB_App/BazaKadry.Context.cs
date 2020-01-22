@@ -440,5 +440,33 @@ namespace DB_App
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StanDzialDel", id1Parameter, id2Parameter);
         }
+    
+        public virtual ObjectResult<kierownicy_Result> kierownicy()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<kierownicy_Result>("kierownicy");
+        }
+    
+        public virtual ObjectResult<pracownicyDzialu_Result> pracownicyDzialu(Nullable<int> idDzialu)
+        {
+            var idDzialuParameter = idDzialu.HasValue ?
+                new ObjectParameter("idDzialu", idDzialu) :
+                new ObjectParameter("idDzialu", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pracownicyDzialu_Result>("pracownicyDzialu", idDzialuParameter);
+        }
+    
+        public virtual ObjectResult<WolneEtaty_Result> WolneEtaty()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WolneEtaty_Result>("WolneEtaty");
+        }
+    
+        public virtual ObjectResult<rozmowyPerDzien_Result> rozmowyPerDzien(Nullable<System.DateTime> data)
+        {
+            var dataParameter = data.HasValue ?
+                new ObjectParameter("data", data) :
+                new ObjectParameter("data", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<rozmowyPerDzien_Result>("rozmowyPerDzien", dataParameter);
+        }
     }
 }
