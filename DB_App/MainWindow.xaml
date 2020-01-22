@@ -9,16 +9,19 @@
     <Grid>
         <DataGrid x:Name="myGrid" HorizontalAlignment="Left" Height="220" Margin="30,142,0,0" VerticalAlignment="Top" Width="726" ItemsSource="{Binding}"     />
         <ToolBar HorizontalAlignment="Left" Height="30" Margin="30,11,0,0" VerticalAlignment="Top" Width="726">
-            <Button Content="Dodaj" VerticalAlignment="Top" Width="60" Click="Button_Click_1" Height="22"/>
+            <Button Content="Dodaj"  VerticalAlignment="Stretch" Width="60" Click="Button_Click_1" Margin="0,0,0,2"/>
+
+
             <Button Content="Usuń rekord" Height="22.4" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
             <Button Content="Odśwież" Height="22.4" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
             <Button Content="Pracownicy Dzialu" Height="22" VerticalAlignment="Top" Width="110" Click="Button_Click_4"/>
             <Button Content="Kierownicy" Height="22.4" VerticalAlignment="Top" Width="75" Click="Button_Click_5"/>
             <Button Content="Wolne etaty" Height="22" VerticalAlignment="Top" Width="75" Click="Button_Click_6"/>
             <Button Content="Rozmowy na dzień" Height="24" VerticalAlignment="Top" Width="110" Click="Button_Click_7"/>
+            <Button Content="Wyloguj" Height="24" VerticalAlignment="Top" Width="75" Click="Button_Click_8"/>
         </ToolBar>
         <ComboBox x:Name="box" HorizontalAlignment="Left" Margin="30,110,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged" DataContext="{Binding}"/>
-        <Button Content="Zapisz" HorizontalAlignment="Left" Margin="687,118,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button x:Name="zapis" Content="Zapisz" HorizontalAlignment="Left" Margin="687,118,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
     </Grid>
 </Window>

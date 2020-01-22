@@ -90,6 +90,7 @@ namespace DB_App
                 }
                 entity.SaveChanges();
                 grid.UpdateLayout();
+                MessageBox.Show("usuwanie powiodło się");
             }
         }
 

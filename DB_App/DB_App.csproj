@@ -62,8 +62,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -118,6 +120,9 @@
     <Compile Include="Dodaj.xaml.cs">
       <DependentUpon>Dodaj.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dodaj_podanie.xaml.cs">
+      <DependentUpon>Dodaj_podanie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dzialy.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
@@ -167,6 +172,10 @@
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Page Include="Dodaj.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dodaj_podanie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

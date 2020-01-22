@@ -468,5 +468,22 @@ namespace DB_App
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<rozmowyPerDzien_Result>("rozmowyPerDzien", dataParameter);
         }
+    
+        public virtual int AddPracMore(Nullable<int> idD, Nullable<int> idP, Nullable<int> idS)
+        {
+            var idDParameter = idD.HasValue ?
+                new ObjectParameter("idD", idD) :
+                new ObjectParameter("idD", typeof(int));
+    
+            var idPParameter = idP.HasValue ?
+                new ObjectParameter("idP", idP) :
+                new ObjectParameter("idP", typeof(int));
+    
+            var idSParameter = idS.HasValue ?
+                new ObjectParameter("idS", idS) :
+                new ObjectParameter("idS", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddPracMore", idDParameter, idPParameter, idSParameter);
+        }
     }
 }

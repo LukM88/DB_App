@@ -288,6 +288,8 @@ namespace DB_App
                    
                     default:
                         var tab7 = entity.Pracownicy;
+                        lista.Add("idDziału");
+                        lista.Add("idStanowiska");
                         for (int i = 0; i < lista.Count; i++)
                         {
                             texty.Add(new Label()
@@ -351,7 +353,8 @@ namespace DB_App
                 }
                 else
                 {
-                    MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                    new Dodaj_podanie();
+                  
                     this.Close();
                 }
             }
@@ -367,7 +370,7 @@ namespace DB_App
                     int id;
                     List<String> dane = new List<string>();
 
-
+                    Pracownicy prac=null;
                     switch (box.SelectedItem.ToString())
                     {
                         case "Dzialy":
@@ -581,6 +584,7 @@ namespace DB_App
                             }
                            
                             var user7 = new Pracownicy { idP = (id + 1) };
+                            
                             try
                             {
                                 
@@ -591,8 +595,9 @@ namespace DB_App
                                 user7.adresP = dane[3].ToString();
                                 user7.nrTelP = dane[4];
                                 user7.placaP = Convert.ToDouble(dane[5]);
+                                
                                 entity.Pracownicy.Add(user7);
-                                System.Console.WriteLine(dane[4]);
+                                prac = user7;
                             }
                             catch (Exception)
                             {
@@ -603,6 +608,11 @@ namespace DB_App
                     try
                     {
                         entity.SaveChanges();
+                        if (box.SelectedItem.ToString().Equals("Pracownicy"))
+                        {
+                            entity.AddPracMore(Convert.ToInt32(dane[6]), Convert.ToInt32(prac.idP), Convert.ToInt32(dane[7]));
+                        }
+                        
                         MessageBox.Show("Dodawanie powiodło się");
 
 

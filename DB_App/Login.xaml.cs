@@ -23,6 +23,7 @@ namespace DB_App
         public Login()
         {
             InitializeComponent();
+            this.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

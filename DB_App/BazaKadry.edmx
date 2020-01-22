@@ -380,6 +380,11 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddPracMore" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idD" Type="int" Mode="In" />
+          <Parameter Name="idP" Type="int" Mode="In" />
+          <Parameter Name="idS" Type="int" Mode="In" />
+        </Function>
         <Function Name="AppUsDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idD" Type="int" Mode="In" />
         </Function>
@@ -1085,7 +1090,12 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           </FunctionImport>
           <FunctionImport Name="WolneEtaty" ReturnType="Collection(kadryModel1.WolneEtaty_Result)" />
           <FunctionImport Name="rozmowyPerDzien" ReturnType="Collection(kadryModel1.rozmowyPerDzien_Result)">
-            <Parameter Name="data" Mode="In" Type="DateTime" />
+          <Parameter Name="data" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AddPracMore">
+            <Parameter Name="idD" Mode="In" Type="Int32" />
+            <Parameter Name="idP" Mode="In" Type="Int32" />
+            <Parameter Name="idS" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1389,6 +1399,7 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddPracMore" FunctionName="kadryModel1.Store.AddPracMore" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
