@@ -126,6 +126,9 @@
     <Compile Include="Dzialy.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
+    <Compile Include="kierownicy1.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
     <Compile Include="kierownicy_Result.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
@@ -133,6 +136,9 @@
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="Podania.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PracDzial.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="Pracownicy.cs">
@@ -167,6 +173,9 @@
     </Compile>
     <Compile Include="Usun.xaml.cs">
       <DependentUpon>Usun.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WolneEt.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="WolneEtaty_Result.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>

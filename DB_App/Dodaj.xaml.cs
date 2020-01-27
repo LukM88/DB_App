@@ -26,7 +26,7 @@ namespace DB_App
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Stos.Children.Clear();
-            List<TextBox> pola = new List<TextBox>();
+            List<UIElement> pola = new List<UIElement>();
             List<Label> texty = new List<Label>();
             var lista = getColTitels();
             using (var entity = new kadryEntities2())
@@ -202,6 +202,25 @@ namespace DB_App
 
 
                             });
+                            if (lista[i].Equals("dataUrPo"))
+                            {
+                                pola[i] = new DatePicker
+                                {
+                                    Width = 120,
+                                    Height = 25,
+                                    HorizontalAlignment = HorizontalAlignment.Left
+                                };
+
+                            }
+                            if (lista[i].Equals("dataZlozPo"))
+                            {
+                                pola[i] = new DatePicker
+                                {
+                                    Width = 120,
+                                    Height = 25,
+                                    HorizontalAlignment = HorizontalAlignment.Left
+                                };
+                            }
                             if (i > 0)
                             {
                                 
@@ -290,6 +309,8 @@ namespace DB_App
                         var tab7 = entity.Pracownicy;
                         lista.Add("idDziału");
                         lista.Add("idStanowiska");
+                        List<String> lista1 = entity.Database.SqlQuery<String>("SELECT nazwaD FROM Dzialy").ToList();
+                        List<String> lista2 = entity.Database.SqlQuery<String>("SELECT nazwa FROM Stanowiska").ToList();
                         for (int i = 0; i < lista.Count; i++)
                         {
                             texty.Add(new Label()
@@ -310,9 +331,26 @@ namespace DB_App
                                 Name = "TextBox" + i,
                                 Visibility = Visibility.Visible,
                                 HorizontalAlignment = HorizontalAlignment.Left,
+                               
 
 
                             });
+                            if(i==lista.Count-2)
+                            {
+                                pola[i] = null;
+                                pola[i] = new ComboBox
+                                {
+                                   ItemsSource= lista1
+                                };
+                            }
+                            if (i == lista.Count - 1)
+                            {
+                                pola[i] = null;
+                                pola[i] = new ComboBox
+                                {
+                                    ItemsSource = lista2
+                                };
+                            }
                             if (i > 0)
                             {
                                 this.Stos.Children.Add(texty[i]);
@@ -662,6 +700,24 @@ namespace DB_App
             using (var entity = new kadryEntities2())
             {
                 List<String> count = entity.Database.SqlQuery<String>("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + box.SelectedItem.ToString() + "' AND TABLE_SCHEMA = 'dbo' AND COLUMN_NAME != 'idR'").ToList(); ;
+                return count;
+            }
+        }
+        private List<String> getColTitels(int i)
+        {
+            using (var entity = new kadryEntities2())
+            {
+                List<String> count;
+                if (i==1)
+                {
+                    count = entity.Database.SqlQuery<String>("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Dzialy' AND TABLE_SCHEMA = 'dbo' AND COLUMN_NAME != 'idR'").ToList(); ;
+
+                }
+                else
+                {
+                     count = entity.Database.SqlQuery<String>("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Stanowiska' AND TABLE_SCHEMA = 'dbo' AND COLUMN_NAME != 'idR'").ToList(); ;
+
+                }
                 return count;
             }
         }

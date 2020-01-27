@@ -22,7 +22,7 @@ namespace DB_App
     public partial class MainWindow : Window
     {
         private String login, haslo;
-
+        private int index;
         
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -263,6 +263,7 @@ namespace DB_App
                     else
                     {
                         MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                        
                     }
 
                 }
@@ -270,11 +271,7 @@ namespace DB_App
                 {
                     MessageBox.Show("Wybierz tabele");
                 }
-                /* using (var entity=new kadryEntities2())
-                 {
-                     
-                     
-                 }*/
+               
             }
         }
 
@@ -282,40 +279,58 @@ namespace DB_App
         {
             using (var entity = new kadryEntities2())
             {
-                if (box.SelectedIndex!=-1)
+                if (box.SelectedIndex != -1)
                 {
+                   
+                        var user = entity.AppUsers.Where(x => x.login == login && x.password == haslo && (x.Role == "m" || x.Role == "a")).FirstOrDefault();
 
                     switch (box.SelectedItem.ToString())
                     {
                         case "Dzialy":
+
+
                             myGrid.DataContext = entity.Dzialy.ToArray();
+
                             break;
                         case "Stanowiska":
-                            myGrid.DataContext = entity.Stanowiska.ToArray();
+                            if (user != null) {
+                                myGrid.DataContext = entity.Stanowiska.ToArray();
+                            }
                             break;
 
                         case "Oferty":
                             myGrid.DataContext = entity.Oferty.ToArray();
                             break;
                         case "AppUsers":
+                            if (user != null) { 
                             myGrid.DataContext = entity.AppUsers.ToArray();
+                    }
                             break;
 
                         case "Podania":
-                            myGrid.DataContext = entity.Podania.ToArray();
-                            break;
+                            if (user != null)
+                            {
+                                myGrid.DataContext = entity.Podania.ToArray();
+                            }
+                                break;
                         case "Rozmowy":
                             myGrid.DataContext = entity.Rozmowy.ToArray();
                             break;
                         case "stan_dzial":
-                            myGrid.DataContext = entity.stan_dzial.ToArray();
-                            break;
+                            if (user != null)
+                            {
+                                myGrid.DataContext = entity.stan_dzial.ToArray();
+                            }
+                                break;
 
                         default:
-                            myGrid.DataContext = entity.Pracownicy.ToArray();
+                            if (user != null)
+                            {
+                                myGrid.DataContext = entity.Pracownicy.ToArray();
+                            }
                             break;
                     }
-
+                
                 }
                 else
                 {

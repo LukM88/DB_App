@@ -171,12 +171,53 @@
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'kadry.dbo.kierownicy1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="kierownicy1">
+          <Key>
+            <PropertyRef Name="idP" />
+          </Key>
+          <Property Name="idP" Type="int" Nullable="false" />
+          <Property Name="imieP" Type="varchar" MaxLength="45" />
+          <Property Name="nazwiskoP" Type="varchar" MaxLength="45" />
+          <Property Name="nazwa" Type="varchar" MaxLength="45" />
+          <Property Name="nazwaD" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kadry.dbo.PracDzial' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PracDzial">
+          <Key>
+            <PropertyRef Name="idP" />
+          </Key>
+          <Property Name="idP" Type="int" Nullable="false" />
+          <Property Name="imieP" Type="varchar" MaxLength="45" />
+          <Property Name="nazwiskoP" Type="varchar" MaxLength="45" />
+          <Property Name="nazwaD" Type="varchar" MaxLength="45" />
+          <Property Name="miastoD" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'kadry.dbo.rozmPerDzien' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="rozmPerDzien">
+          <Property Name="dataRozmowy" Type="datetime" />
+          <Property Name="Expr1" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TABELE">
           <Key>
             <PropertyRef Name="TABLE_NAME" />
           </Key>
           <Property Name="TABLE_NAME" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'kadry.dbo.WolneEt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WolneEt">
+          <Key>
+            <PropertyRef Name="idD" />
+          </Key>
+          <Property Name="idD" Type="int" Nullable="false" />
+          <Property Name="nazwaD" Type="varchar" MaxLength="45" />
+          <Property Name="miastoD" Type="varchar" MaxLength="45" />
+          <Property Name="nazwa" Type="varchar" MaxLength="45" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -526,10 +567,36 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <EntitySet Name="stan_prac" EntityType="Self.stan_prac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stanowiska" EntityType="Self.Stanowiska" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kierownicy1" EntityType="Self.kierownicy1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [kierownicy1].[idP] AS [idP], 
+    [kierownicy1].[imieP] AS [imieP], 
+    [kierownicy1].[nazwiskoP] AS [nazwiskoP], 
+    [kierownicy1].[nazwa] AS [nazwa], 
+    [kierownicy1].[nazwaD] AS [nazwaD]
+    FROM [dbo].[kierownicy1] AS [kierownicy1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PracDzial" EntityType="Self.PracDzial" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PracDzial].[idP] AS [idP], 
+    [PracDzial].[imieP] AS [imieP], 
+    [PracDzial].[nazwiskoP] AS [nazwiskoP], 
+    [PracDzial].[nazwaD] AS [nazwaD], 
+    [PracDzial].[miastoD] AS [miastoD]
+    FROM [dbo].[PracDzial] AS [PracDzial]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="TABELE" EntityType="Self.TABELE" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [TABELE].[TABLE_NAME] AS [TABLE_NAME]
     FROM [dbo].[TABELE] AS [TABELE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="WolneEt" EntityType="Self.WolneEt" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WolneEt].[idD] AS [idD], 
+    [WolneEt].[nazwaD] AS [nazwaD], 
+    [WolneEt].[miastoD] AS [miastoD], 
+    [WolneEt].[nazwa] AS [nazwa]
+    FROM [dbo].[WolneEt] AS [WolneEt]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -1097,6 +1164,9 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
             <Parameter Name="idP" Mode="In" Type="Int32" />
             <Parameter Name="idS" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="kierownicy1" EntityType="kadryModel1.kierownicy1" />
+          <EntitySet Name="PracDzials" EntityType="kadryModel1.PracDzial" />
+          <EntitySet Name="WolneEts" EntityType="kadryModel1.WolneEt" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1131,6 +1201,35 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
           <Property Type="Int32" Name="idPo" Nullable="false" />
           <Property Type="DateTime" Name="dataRozmowy" Nullable="true" Precision="23" />
         </ComplexType>
+        <EntityType Name="kierownicy1">
+          <Key>
+            <PropertyRef Name="idP" />
+          </Key>
+          <Property Name="idP" Type="Int32" Nullable="false" />
+          <Property Name="imieP" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="nazwiskoP" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="nazwa" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="nazwaD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PracDzial">
+          <Key>
+            <PropertyRef Name="idP" />
+          </Key>
+          <Property Name="idP" Type="Int32" Nullable="false" />
+          <Property Name="imieP" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="nazwiskoP" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="nazwaD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="miastoD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WolneEt">
+          <Key>
+            <PropertyRef Name="idD" />
+          </Key>
+          <Property Name="idD" Type="Int32" Nullable="false" />
+          <Property Name="nazwaD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="miastoD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="nazwa" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1400,6 +1499,38 @@ warning 6002: The table/view 'kadry.dbo.TABELE' does not have a primary key defi
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AddPracMore" FunctionName="kadryModel1.Store.AddPracMore" />
+          <EntitySetMapping Name="kierownicy1">
+            <EntityTypeMapping TypeName="kadryModel1.kierownicy1">
+              <MappingFragment StoreEntitySet="kierownicy1">
+                <ScalarProperty Name="nazwaD" ColumnName="nazwaD" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="nazwiskoP" ColumnName="nazwiskoP" />
+                <ScalarProperty Name="imieP" ColumnName="imieP" />
+                <ScalarProperty Name="idP" ColumnName="idP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracDzials">
+            <EntityTypeMapping TypeName="kadryModel1.PracDzial">
+              <MappingFragment StoreEntitySet="PracDzial">
+                <ScalarProperty Name="miastoD" ColumnName="miastoD" />
+                <ScalarProperty Name="nazwaD" ColumnName="nazwaD" />
+                <ScalarProperty Name="nazwiskoP" ColumnName="nazwiskoP" />
+                <ScalarProperty Name="imieP" ColumnName="imieP" />
+                <ScalarProperty Name="idP" ColumnName="idP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WolneEts">
+            <EntityTypeMapping TypeName="kadryModel1.WolneEt">
+              <MappingFragment StoreEntitySet="WolneEt">
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="miastoD" ColumnName="miastoD" />
+                <ScalarProperty Name="nazwaD" ColumnName="nazwaD" />
+                <ScalarProperty Name="idD" ColumnName="idD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
