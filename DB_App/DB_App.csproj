@@ -56,13 +56,16 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MySql.Data, Version=8.0.16.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -117,7 +120,16 @@
     <Compile Include="Dodaj.xaml.cs">
       <DependentUpon>Dodaj.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dodaj_podanie.xaml.cs">
+      <DependentUpon>Dodaj_podanie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dzialy.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="kierownicy1.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="kierownicy_Result.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="Oferty.cs">
@@ -126,10 +138,19 @@
     <Compile Include="Podania.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
+    <Compile Include="PracDzial.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pracownicy.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
+    <Compile Include="pracownicyDzialu_Result.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
     <Compile Include="Rozmowy.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rozmowyPerDzien_Result.cs">
       <DependentUpon>BazaKadry.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
@@ -153,7 +174,17 @@
     <Compile Include="Usun.xaml.cs">
       <DependentUpon>Usun.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WolneEt.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WolneEtaty_Result.cs">
+      <DependentUpon>BazaKadry.tt</DependentUpon>
+    </Compile>
     <Page Include="Dodaj.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dodaj_podanie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

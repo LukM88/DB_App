@@ -42,6 +42,9 @@ namespace DB_App
         public virtual DbSet<Stanowiska> Stanowiska { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TABELE> TABELE { get; set; }
+        public virtual DbSet<kierownicy1> kierownicy1 { get; set; }
+        public virtual DbSet<PracDzial> PracDzials { get; set; }
+        public virtual DbSet<WolneEt> WolneEts { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -439,6 +442,51 @@ namespace DB_App
                 new ObjectParameter("id2", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StanDzialDel", id1Parameter, id2Parameter);
+        }
+    
+        public virtual ObjectResult<kierownicy_Result> kierownicy()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<kierownicy_Result>("kierownicy");
+        }
+    
+        public virtual ObjectResult<pracownicyDzialu_Result> pracownicyDzialu(Nullable<int> idDzialu)
+        {
+            var idDzialuParameter = idDzialu.HasValue ?
+                new ObjectParameter("idDzialu", idDzialu) :
+                new ObjectParameter("idDzialu", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pracownicyDzialu_Result>("pracownicyDzialu", idDzialuParameter);
+        }
+    
+        public virtual ObjectResult<WolneEtaty_Result> WolneEtaty()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WolneEtaty_Result>("WolneEtaty");
+        }
+    
+        public virtual ObjectResult<rozmowyPerDzien_Result> rozmowyPerDzien(Nullable<System.DateTime> data)
+        {
+            var dataParameter = data.HasValue ?
+                new ObjectParameter("data", data) :
+                new ObjectParameter("data", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<rozmowyPerDzien_Result>("rozmowyPerDzien", dataParameter);
+        }
+    
+        public virtual int AddPracMore(Nullable<int> idD, Nullable<int> idP, Nullable<int> idS)
+        {
+            var idDParameter = idD.HasValue ?
+                new ObjectParameter("idD", idD) :
+                new ObjectParameter("idD", typeof(int));
+    
+            var idPParameter = idP.HasValue ?
+                new ObjectParameter("idP", idP) :
+                new ObjectParameter("idP", typeof(int));
+    
+            var idSParameter = idS.HasValue ?
+                new ObjectParameter("idS", idS) :
+                new ObjectParameter("idS", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddPracMore", idDParameter, idPParameter, idSParameter);
         }
     }
 }

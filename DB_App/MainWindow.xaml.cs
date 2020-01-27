@@ -22,7 +22,7 @@ namespace DB_App
     public partial class MainWindow : Window
     {
         private String login, haslo;
-
+        private int index;
         
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -118,156 +118,317 @@ namespace DB_App
                 if (box.SelectedIndex != -1)
                 {
                     var user = entity.AppUsers.Where(x => x.login == login && x.password == haslo && (x.Role == "m" || x.Role == "a")).FirstOrDefault();
-
-
-                    switch (box.SelectedItem.ToString())
+                    if (user != null)
+                    {
+                        try
                         {
-                         
-                            case "Dzialy":
-                            var zmienna = (Dzialy[])myGrid.DataContext;
-                            for (int i = 0; i < zmienna.Count(); i++)
+                            switch (box.SelectedItem.ToString())
                             {
-                                if (user != null)
-                                {
-                                    entity.ModDzialy(zmienna[i].idD,zmienna[i].nazwaD,zmienna[i].miastoD,zmienna[i].adresD);
-                                    
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
-                                    break;
-                                }
-                            }
-                            entity.SaveChanges();
-                            break;
-                            case "Stanowiska":
-                            var zmienna1 = (Stanowiska[])myGrid.DataContext;
-                            for (int i = 0; i < zmienna1.Count(); i++)
-                            {
-                                if (user != null)
-                                {
-                                    entity.ModStano(zmienna1[i].idS, zmienna1[i].nazwa);
-                                    
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
-                                    break;
-                                }
-                            }
-                            entity.SaveChanges();
-                            break;
-                            case "Oferty":
-                            var zmienna2 = (Oferty[])myGrid.DataContext;
-                            for (int i = 0; i < zmienna2.Count(); i++)
-                            {
-                                if (user != null)
-                                {
-                                    entity.ModOferty(zmienna2[i].idO,zmienna2[i].dataWystaw);
-                                   
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
-                                    break;
-                                }
-                            }
-                            entity.SaveChanges();
-                            break;
-                            case "Podania":
-                            var zmienna3 = (Podania[])myGrid.DataContext;
-                            for (int i = 0; i < zmienna3.Count(); i++)
-                            {
-                                if (user != null)
-                                {
-                                    entity.ModPodania( zmienna3[i].idPo, zmienna3[i].idR, zmienna3[i].idO,zmienna3[i].imiePo,zmienna3[i].nazwiskoPo,zmienna3[i].miasto,zmienna3[i].adres,zmienna3[i].dataUrPo,zmienna3[i].wyksztalceniePo,zmienna3[i].dataZlozPo);
-                                    
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
-                                    break;
-                                }
-                            }
-                            entity.SaveChanges();
-                            break;
-                            case "Rozmowy":
-                            var zmienna4 = (Rozmowy[])myGrid.DataContext;
-                            for (int i = 0; i < zmienna4.Count(); i++)
-                            {
-                                if (user != null)
-                                {
-                                    entity.ModRozmowy(zmienna4[i].idR, zmienna4[i].idP, zmienna4[i].idPo, zmienna4[i].dataRozmowy);
 
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                                case "Dzialy":
+                                    var zmienna = (Dzialy[])myGrid.DataContext;
+                                    for (int i = 0; i < zmienna.Count(); i++)
+                                    {
+                                        if (user != null)
+                                        {
+                                            entity.ModDzialy(zmienna[i].idD, zmienna[i].nazwaD, zmienna[i].miastoD, zmienna[i].adresD);
+
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                                            break;
+                                        }
+                                    }
+                                    entity.SaveChanges();
                                     break;
-                                }
-                            }
-                            entity.SaveChanges();
-                            break;
-                            case "AppUsers":
-                            var zmienna5 = (AppUsers[])myGrid.DataContext;
-                            for (int i = 0; i < zmienna5.Count(); i++)
-                            {
-                                if (user != null)
-                                {
-                                    entity.ModAppUsers(zmienna5[i].uId, zmienna5[i].login, zmienna5[i].password, zmienna5[i].Role);
+                                case "Stanowiska":
+                                    var zmienna1 = (Stanowiska[])myGrid.DataContext;
+                                    for (int i = 0; i < zmienna1.Count(); i++)
+                                    {
+                                        if (user != null)
+                                        {
+                                            entity.ModStano(zmienna1[i].idS, zmienna1[i].nazwa);
 
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                                            break;
+                                        }
+                                    }
+                                    entity.SaveChanges();
                                     break;
-                                }
-                            }
-                            entity.SaveChanges();
-                            break;
-                        case "Pracownicy":
-                            var zmienna6 = (Pracownicy[])myGrid.DataContext;
-                            for (int i = 0; i < zmienna6.Count(); i++)
-                            {
-                                if (user != null)
-                                {
-                                    entity.ModPracownicy(zmienna6[i].idP, zmienna6[i].imieP, zmienna6[i].nazwiskoP, zmienna6[i].miastoP,zmienna6[i].adresP,zmienna6[i].nrTelP,zmienna6[i].placaP);
+                                case "Oferty":
+                                    var zmienna2 = (Oferty[])myGrid.DataContext;
+                                    for (int i = 0; i < zmienna2.Count(); i++)
+                                    {
+                                        if (user != null)
+                                        {
+                                            entity.ModOferty(zmienna2[i].idO, zmienna2[i].dataWystaw);
 
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                                            break;
+                                        }
+                                    }
+                                    entity.SaveChanges();
                                     break;
-                                }
+                                case "Podania":
+                                    var zmienna3 = (Podania[])myGrid.DataContext;
+                                    for (int i = 0; i < zmienna3.Count(); i++)
+                                    {
+                                        if (user != null)
+                                        {
+                                            entity.ModPodania(zmienna3[i].idPo, zmienna3[i].idR, zmienna3[i].idO, zmienna3[i].imiePo, zmienna3[i].nazwiskoPo, zmienna3[i].miasto, zmienna3[i].adres, zmienna3[i].dataUrPo, zmienna3[i].wyksztalceniePo, zmienna3[i].dataZlozPo);
+
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                                            break;
+                                        }
+                                    }
+                                    entity.SaveChanges();
+                                    break;
+                                case "Rozmowy":
+                                    var zmienna4 = (Rozmowy[])myGrid.DataContext;
+                                    for (int i = 0; i < zmienna4.Count(); i++)
+                                    {
+                                        if (user != null)
+                                        {
+                                            entity.ModRozmowy(zmienna4[i].idR, zmienna4[i].idP, zmienna4[i].idPo, zmienna4[i].dataRozmowy);
+
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                                            break;
+                                        }
+                                    }
+                                    entity.SaveChanges();
+                                    break;
+                                case "AppUsers":
+                                    var zmienna5 = (AppUsers[])myGrid.DataContext;
+                                    for (int i = 0; i < zmienna5.Count(); i++)
+                                    {
+                                        if (user != null)
+                                        {
+                                            entity.ModAppUsers(zmienna5[i].uId, zmienna5[i].login, zmienna5[i].password, zmienna5[i].Role);
+
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                                            break;
+                                        }
+                                    }
+                                    entity.SaveChanges();
+                                    break;
+                                case "Pracownicy":
+                                    var zmienna6 = (Pracownicy[])myGrid.DataContext;
+                                    for (int i = 0; i < zmienna6.Count(); i++)
+                                    {
+                                        if (user != null)
+                                        {
+                                            entity.ModPracownicy(zmienna6[i].idP, zmienna6[i].imieP, zmienna6[i].nazwiskoP, zmienna6[i].miastoP, zmienna6[i].adresP, zmienna6[i].nrTelP, zmienna6[i].placaP);
+
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                                            break;
+                                        }
+                                    }
+                                    entity.SaveChanges();
+
+                                    break;
+                                default:
+
+                                    MessageBox.Show("Błąd modyfikacji");
+                                    break;
+
+
+
                             }
-                            entity.SaveChanges();
-                            
-                            break;
-                        default:
-
-                            MessageBox.Show("Błąd modyfikacji");
-                                break;
-                        
-                    
-
+                            myGrid.UpdateLayout();
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Wystąpił błąd w podanych wartościach");
+                        }
                     }
-                    myGrid.UpdateLayout();
+                    else
+                    {
+                        MessageBox.Show("Nie posiadasz uprawnień do tej operacji");
+                        
+                    }
+
                 }
                 else
                 {
                     MessageBox.Show("Wybierz tabele");
                 }
-                /* using (var entity=new kadryEntities2())
-                 {
-                     
-                     
-                 }*/
+               
             }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            myGrid.UpdateLayout();
+            using (var entity = new kadryEntities2())
+            {
+                if (box.SelectedIndex != -1)
+                {
+                   
+                        var user = entity.AppUsers.Where(x => x.login == login && x.password == haslo && (x.Role == "m" || x.Role == "a")).FirstOrDefault();
+
+                    switch (box.SelectedItem.ToString())
+                    {
+                        case "Dzialy":
+
+
+                            myGrid.DataContext = entity.Dzialy.ToArray();
+
+                            break;
+                        case "Stanowiska":
+                            if (user != null) {
+                                myGrid.DataContext = entity.Stanowiska.ToArray();
+                            }
+                            break;
+
+                        case "Oferty":
+                            myGrid.DataContext = entity.Oferty.ToArray();
+                            break;
+                        case "AppUsers":
+                            if (user != null) { 
+                            myGrid.DataContext = entity.AppUsers.ToArray();
+                    }
+                            break;
+
+                        case "Podania":
+                            if (user != null)
+                            {
+                                myGrid.DataContext = entity.Podania.ToArray();
+                            }
+                                break;
+                        case "Rozmowy":
+                            myGrid.DataContext = entity.Rozmowy.ToArray();
+                            break;
+                        case "stan_dzial":
+                            if (user != null)
+                            {
+                                myGrid.DataContext = entity.stan_dzial.ToArray();
+                            }
+                                break;
+
+                        default:
+                            if (user != null)
+                            {
+                                myGrid.DataContext = entity.Pracownicy.ToArray();
+                            }
+                            break;
+                    }
+                
+                }
+                else
+                {
+                    MessageBox.Show("Wybierz tabele");
+                }
+            }
+                
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            using (var entity = new kadryEntities2())
+            {
+                var user = entity.AppUsers.Where(x => x.login == login && x.password == haslo && (x.Role == "m" || x.Role == "a")).FirstOrDefault();
+                if (user != null)
+                {
+                    try
+                    {
+                        String input = Microsoft.VisualBasic.Interaction.InputBox("Podaj wartość",
+                                             "Podaj Id Działu",
+                                             "",
+                                             -1, -1);
+                        myGrid.DataContext = entity.pracownicyDzialu(Convert.ToInt32(input)).ToArray();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podano nieprawidłową wartość");
+                    }
+                   
+                }
+                else
+                {
+                    MessageBox.Show("Nie masz uprawnień do tenj  funkcji");
+                }
+            }
+               
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            using (var entity = new kadryEntities2())
+            {
+                var user = entity.AppUsers.Where(x => x.login == login && x.password == haslo && (x.Role == "m" || x.Role == "a")).FirstOrDefault();
+                if (user != null)
+                {
+                    
+                    myGrid.DataContext = entity.kierownicy().ToArray();
+                   
+
+                }
+                else
+                {
+                    MessageBox.Show("Nie masz uprawnień do tenj  funkcji");
+                }
+            }
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            using (var entity = new kadryEntities2())
+            {
+                myGrid.DataContext = entity.WolneEtaty().ToArray();
+            }
+               
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            using (var entity = new kadryEntities2())
+            {
+                var user = entity.AppUsers.Where(x => x.login == login && x.password == haslo && (x.Role == "m" || x.Role == "a")).FirstOrDefault();
+                if (user != null)
+                {
+                    try
+                    {
+                        String input = Microsoft.VisualBasic.Interaction.InputBox("Podaj wartość",
+                                             "Podaj datę która cię interesuje",
+                                             "RRRR-mm-dd",
+                                             -1, -1);
+                        myGrid.DataContext = entity.rozmowyPerDzien(Convert.ToDateTime(input)).ToArray();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podano nieprawidłową wartość");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Nie masz uprawnień do tenj  funkcji");
+                }
+            }
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            new Login();
+            this.Close();
         }
 
         public MainWindow(String uid,String password)

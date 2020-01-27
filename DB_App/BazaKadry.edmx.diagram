@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d121f1b56470444f87845cf048041f3c" Name="Diagram1" ZoomLevel="63">
+      <Diagram DiagramId="d121f1b56470444f87845cf048041f3c" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="kadryModel1.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="kadryModel1.AppUsers" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="kadryModel1.AspNetRoles" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
@@ -32,6 +32,9 @@
         <AssociationConnector Association="kadryModel1.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="kadryModel1.Prac_dzial" ManuallyRouted="false" />
         <AssociationConnector Association="kadryModel1.stan_prac" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="kadryModel1.kierownicy1" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="kadryModel1.PracDzial" Width="1.5" PointX="9.375" PointY="7.75" />
+        <EntityTypeShape EntityType="kadryModel1.WolneEt" Width="1.5" PointX="7.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
