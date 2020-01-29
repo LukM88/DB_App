@@ -29,10 +29,6 @@ namespace DB_App
     
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AppUsers> AppUsers { get; set; }
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Dzialy> Dzialy { get; set; }
         public virtual DbSet<Oferty> Oferty { get; set; }
         public virtual DbSet<Podania> Podania { get; set; }
